@@ -1,6 +1,6 @@
 # dotfiles
 
-
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DavitTec/dotfiles/make%20test?style=plastic)
 [![make test](https://github.com/DavitTec/dotfiles/workflows/make%20test/badge.svg)](https://github.com/DavitTec/dotfiles/actions?query=workflow%3A%22make+test%22+branch%3Amaster)
 ![version](https://img.shields.io/badge/version-0.0.3-red) 
 ![Debian package](https://img.shields.io/debian/v/bash/unstable?color=red&label=bash&style=plastic)
