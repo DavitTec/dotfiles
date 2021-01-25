@@ -1,6 +1,7 @@
 # dotfiles
 <!-- badges -->
 https://shields.io/
+<img border="0" alt="BADGE HELP" src="img/shield.png" width="20" height="20">
 <!-- badges -->
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DavitTec/dotfiles/make%20test?style=plastic)
 [![make test](https://github.com/DavitTec/dotfiles/workflows/make%20test/badge.svg)](https://github.com/DavitTec/dotfiles/actions?query=workflow%3A%22make+test%22+branch%3Amaster)
