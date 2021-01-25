@@ -1,7 +1,13 @@
 # dotfiles
 
+<p align="center">
 [![make test](https://github.com/DavitTec/dotfiles/workflows/make%20test/badge.svg)](https://github.com/DavitTec/dotfiles/actions?query=workflow%3A%22make+test%22+branch%3Amaster)
-
+            alt="chat on Discord"></a>
+ 
+   <a href="https://twitter.com/intent/follow?screen_name=_davit">
+        <img src="https://img.shields.io/twitter/follow/shields_io?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
+</p>
 
 Development setup configuration files for Digital Archiving Validation IT. Suitable from base to advanced system setup, and customized by technicians.
 
