@@ -20,4 +20,10 @@ Development setup configuration files for Digital Archiving Validation IT. Suita
 
 ## About
 
-### Installing
+### Installing 
+
+### References
+
+Novice or old user of Linux systems, it is worth understandin the power of Dotfile and getting them organised and to have a updated backup of the LASTES version.   
+A good read is https://dotfiles.github.io/
+
