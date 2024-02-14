@@ -1,4 +1,3 @@
 # Ignore all files and Diretories in $HOME
 # WE must override the gitignore case by case with git add -f  or --force
 # 
-*

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo -e "\nAvailable short / long scripts \n"
+
+echo "helpme - a list of scripts and aliases"
+echo "lgpk - send list of packages to Shared Folder"
+echo "pn - pnpm  Package Manager"
+echo "pgrd - Upgrade all system packages"

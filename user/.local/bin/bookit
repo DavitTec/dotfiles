@@ -1,0 +1,21 @@
+#!/bin/bash
+myName="Bookmarking Script"
+# a script to start the Bookmarking application (Briefkasten)
+VERSION=0.0.1
+# 
+# ------------------------------------------------------------------------
+#
+orig=pwd
+
+Dir=$HOME/Development/briefkasten-davit/
+
+cd $Dir
+
+pnpm run dev
+
+cd $orig
+exit 0
+
+
+# REFERENCES
+#

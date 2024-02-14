@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+dir="/home/shared/$(hostname)"
+echo "$dir"
+if [[ ! -e $dir ]]; then
+  echo -e "\nCreating directory $dir for Installed Package logs"
+  mkdir -p "$dir"
+fi
+
+apt list --installed >>"$dir/$(date +%Y%m%d%H%M)-$(hostname)-systemlog.md"
+
+echo -e "\nNew Package Log generated at file://$dir/\n"

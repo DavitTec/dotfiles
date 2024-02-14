@@ -1,0 +1,107 @@
+#!/bin/bash
+myName="CLONE Script"
+# a script to organise GITHUB clones and repos.
+VERSION=0.0.5
+# 
+# ------------------------------------------------------------------------
+#
+# REFERENCES
+#
+# Bash: Using BASH_REMATCH to pull capture groups from a regex
+# https://fabianlee.org/2020/01/29/bash-using-bash_rematch-to-pull-capture-groups-from-a-regex/
+# https://unix.stackexchange.com/questions/107989/how-to-detect-if-a-file-is-hidden
+
+# TODO Assume options are URL = $1, if not then TRY $1 as REPO 
+
+# colors
+B='\033[1;34m'
+G='\033[0;32m'
+O='\033[0;33m'
+R='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Default target directory
+target="$HOME/github.com"
+dir=${0%/*}  #Directory of script
+
+mode=
+clone=true
+clear
+echo -e 
+echo -e "#------------------------------------------------------------------------#"  
+echo -e "#------:  ${B}$myName $VERSION${NC} -  clone a git repository at   "
+echo -e "#------:  run from -(file://${0})     "
+echo -e "#------:  BASE @: file://"$target"/    "  
+echo -e "#------:           ${G}${mode^^}${NC}                 "
+echo -e "#------------------------------------------------------------------------#" 
+echo -e 
+url="$1"  
+
+
+# 
+if [[ -z $url ]];then
+  echo -e
+ "${O}String is empty${NC}"
+  echo -e
+ "Must provide a URL or Repository name" 
+  #TODO what about
+  exit
+fi
+
+# url="git://github.com/some-user/my-repo.git"
+
+re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+)(.git)*$"
+
+if [[ $url =~ $re ]]; then    
+    protocol=${BASH_REMATCH[1]}
+    separator=${BASH_REMATCH[2]}
+    hostname=${BASH_REMATCH[3]}
+    user=${BASH_REMATCH[4]}
+    reponame=${BASH_REMATCH[5]}
+fi
+
+
+repo="${reponame%.*}" # Repository name stripping dot git
+ext=${reponame##*.}   # usually "git" but try and catch
+
+echo -e "Protocol=$protocol"
+echo -e "Seperator=$separator"
+echo -e "hostname="$hostname""   # we assume we are placing repos into $HOME/github.com
+echo -e "user="$user""
+echo -e "reponame=$reponame"
+echo -e "repo="$repo""
+echo -e "ext=$ext"
+echo -e "Target directory: $target"
+
+# Check if the repo already exists and decide to update or exit
+# a GIT clone must have a .git/config file
+FILE="$target/$user/$repo/.git/config"
+
+if [[ -a $FILE ]]; then
+  echo -e "${R}repo GIT Config file exists${NC} at file://$FILE"
+  clone=false
+fi
+
+# Testing mode catch
+if [[ -n $mode ]]; then
+  echo -e "${O}--TESTING MODE ON${NC}"
+  echo -e "${R}Target directory EXISTS${NC}: file://"$target"/"$user"/"$repo"/" 
+  #stat stat -c '%w' $FILE
+  exit 1
+  
+fi
+   # echo "--TESTING OFF"
+
+# MAIN
+if $clone ; then
+  cmd="git clone https://github.com/"$user"/"$reponame" "$target"/"$user"/"$repo"/";
+  echo -e "$cmd";
+  echo -e "git cloning repo......"
+  $cmd
+  echo -e "${G}...done${NC}"
+fi
+ 
+echo -e "REPO located at file://"$target"/"$user"/"$repo"/" 
+echo -e "#------------------------------------------------------------------------#" 
+
+exit 0
